@@ -1,13 +1,14 @@
 ---
-import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
-  title: 'About us',
+  title: '關於我 - Lisbeth Wu',
 };
 ---
 
@@ -15,213 +16,188 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    tagline="About us"
-    image={{
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Caos Image',
-    }}
+    id="hero"
+    title="Lisbeth Wu"
+    tagline="Backend/DevOps 工程師"
+    actions={[{ variant: 'primary', text: '聯絡我', href: getPermalink('/contact') }]}
   >
-    <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white"> Beautiful Website Templates</span>
-    </Fragment>
-
     <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
+      我是一位專精於後端開發與 DevOps 的工程師，擁有豐富的 Ruby on Rails 和 AWS 雲端基礎設施經驗。<br />
+      致力於建構高效能、可擴展的系統架構，並積極參與開源社群貢獻。
     </Fragment>
   </Hero>
 
-  <!-- Stats Widget ****************** -->
+  <!-- Content Widget **************** -->
 
-  <Stats
-    title="Statistics about us"
-    stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
-    ]}
-  />
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    title="Our templates"
-    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
+  <Content
+    id="about"
     columns={3}
-    isBeforeContent={true}
     items={[
       {
-        title: 'Educational',
-        description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
-        icon: 'tabler:template',
+        icon: 'tabler:brand-github',
+        callToAction: {
+          target: '_blank',
+          text: 'GitHub',
+          href: 'https://github.com/lisbethw1130',
+        },
       },
       {
-        title: 'Interior Design',
-        description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
-        icon: 'tabler:template',
+        icon: 'tabler:brand-linkedin',
+        callToAction: {
+          target: '_blank',
+          text: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/lisbethwu/',
+        },
       },
       {
-        title: 'Photography',
-        description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
-        icon: 'tabler:template',
-      },
-    ]}
-  />
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'E-commerce',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Blog',
-        description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Business',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
+        icon: 'tabler:mail',
+        callToAction: {
+          text: 'Email',
+          href: 'mailto:meow@liswu.me',
+        },
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
+      src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Lisbeth Wu',
+      loading: 'eager',
     }}
-  />
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">關於我</h2>
+      <p>
+        歡迎來到我的技術世界。我專注於後端系統開發與 DevOps 實踐，
+        每一行程式碼都體現了我對於技術品質和系統效能的堅持。
+      </p>
+      <br />
+      <p>
+        我從日常的技術挑戰中獲得靈感，無論是優化系統效能、設計 CI/CD 管道，
+        還是參與開源專案的協作開發。
+      </p>
+      <br />
+      <p>
+        除了技術工作，我也積極參與社群活動，相信知識分享能推動整個技術生態的進步。
+      </p>
+      <br />
+      <p>如果您想要深入了解我的工作，歡迎透過以下方式聯絡我：</p>
+    </Fragment>
 
-  <!-- Steps2 Widget ****************** -->
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 
-  <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="resume"
+    title="工作經驗"
     items={[
       {
-        title: 'Customer-centric approach',
-        description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
+        title:
+          'DevOps 工程師 <br /> <span class="font-normal">Womany Media Group, 台北</span> <br /> <span class="text-sm font-normal">2019 - 現在</span>',
+        description: `從零開始設計並實作分散式管道和雲端基礎設施，成功處理超過百萬流量。<br />
+        主要負責：<br />
+        • AWS 雲端架構設計與管理<br />
+        • 容器化微服務架構轉換<br />
+        • CI/CD 管道建置與優化<br />
+        • 系統監控與自動化部署`,
+        icon: 'tabler:briefcase',
       },
       {
-        title: 'Constant Improvement',
-        description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
+        title:
+          '後端工程師 <br /> <span class="font-normal">前一份工作</span> <br /> <span class="text-sm font-normal">2017 - 2019</span>',
+        description: `專精於 Ruby on Rails 和 PHP 後端開發，具備大型應用系統開發經驗。<br />
+        • API 設計與開發<br />
+        • 資料庫架構優化<br />
+        • 系統效能調優<br />
+        • 第三方服務整合`,
+        icon: 'tabler:code',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="education"
+    title="認證與成就"
+    items={[
+      {
+        title: 'AWS Solutions Architect',
+        description: '具備完整的 AWS 雲端架構設計能力，專精於 ECS、EC2 自動擴展等服務。',
+        icon: 'tabler:certificate',
       },
       {
-        title: 'Ethical Practices',
-        description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+        title: 'AWS Developer Associate',
+        description: '熟悉 AWS 開發工具與最佳實踐，能夠建構高效能的雲端應用程式。',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: '開源社群貢獻',
+        description: '積極參與開源專案，透過 GitHub 貢獻程式碼，分享技術知識與經驗。',
+        icon: 'tabler:heart',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="核心技能"
+    subtitle="我的技術專長涵蓋後端開發、DevOps 實踐以及雲端架構設計"
+    columns={3}
+    defaultIcon="tabler:point"
+    items={[
+      {
+        title: 'Ruby on Rails',
+        description: '具備豐富的 Rails 應用開發經驗，熟悉 MVC 架構和最佳實踐。',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'AWS 雲端服務',
+        description: '專精於 ECS、EC2、Lambda 等 AWS 服務，擁有 Solutions Architect 認證。',
+        icon: 'tabler:cloud',
+      },
+      {
+        title: 'Docker',
+        description: '容器化技術專家，能夠設計高效的容器架構和編排。',
+        icon: 'tabler:brand-docker',
+      },
+      {
+        title: 'DevOps 工具鏈',
+        description: '熟練使用 CI/CD 工具，建構自動化部署管道。',
+        icon: 'tabler:tools',
+      },
+      {
+        title: 'PHP',
+        description: '具備 PHP 開發經驗，能夠維護和優化既有系統。',
+        icon: 'tabler:brand-php',
+      },
+      {
+        title: '系統監控',
+        description: '建置完整的監控體系，確保系統穩定性和效能。',
+        icon: 'tabler:activity',
       },
     ]}
   />
 
-  <!-- Steps2 Widget ****************** -->
+  <!-- CallToAction Widget *********** -->
 
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
-    items={[
+  <CallToAction
+    title="讓我們一起創建卓越的技術解決方案"
+    subtitle="如果您正在尋找經驗豐富的 Backend/DevOps 工程師，或想要討論技術議題，歡迎與我聯絡。"
+    actions={[
       {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
+        variant: 'primary',
+        text: '聯絡我',
+        href: getPermalink('/contact'),
       },
       {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
-    items={[
-      {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
-      },
-      {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
-      },
-      {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
-      {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
+        text: '查看我的 GitHub',
+        href: 'https://github.com/lisbethw1130',
       },
     ]}
   />
