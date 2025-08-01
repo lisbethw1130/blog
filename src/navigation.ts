@@ -19,7 +19,7 @@ export const headerData = {
         },
         {
           text: '標籤',
-          href: getPermalink('astro', 'tag'),
+          href: getPermalink('/tags'),
         },
       ],
     },
@@ -42,7 +42,7 @@ export const footerData = {
       links: [
         { text: '最新文章', href: getBlogPermalink() },
         { text: '分類', href: getPermalink('tutorials', 'category') },
-        { text: '標籤', href: getPermalink('astro', 'tag') },
+        { text: '標籤', href: getPermalink('/tags') },
         { text: 'RSS', href: getAsset('/rss.xml') },
       ],
     },

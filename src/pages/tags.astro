@@ -1,0 +1,110 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/blog/Headline.astro';
+import { fetchPosts } from '~/utils/blog';
+import { getPermalink } from '~/utils/permalinks';
+
+interface TagInfo {
+  title: string;
+  slug: string;
+  count: number;
+}
+
+// 獲取所有標籤及其文章數量
+const posts = await fetchPosts();
+const tagCounts: Record<string, TagInfo> = {};
+
+posts.forEach((post) => {
+  if (Array.isArray(post.tags)) {
+    post.tags.forEach((tag) => {
+      if (tagCounts[tag.slug]) {
+        tagCounts[tag.slug].count += 1;
+      } else {
+        tagCounts[tag.slug] = {
+          title: tag.title,
+          slug: tag.slug,
+          count: 1,
+        };
+      }
+    });
+  }
+});
+
+// 轉換為陣列並依文章數量排序
+const sortedTags: TagInfo[] = Object.values(tagCounts)
+  .sort((a, b) => b.count - a.count);
+
+const metadata = {
+  title: 'tags',
+  description: '瀏覽所有文章標籤，快速找到您感興趣的主題。',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <Headline>所有標籤</Headline>
+    
+    <div class="mb-8">
+      <p class="text-muted dark:text-slate-400">
+        共有 {sortedTags.length} 個標籤，涵蓋 {posts.length} 篇文章
+      </p>
+    </div>
+
+    {sortedTags.length === 0 ? (
+      <div class="text-center py-12">
+        <p class="text-xl text-muted dark:text-slate-400">目前還沒有任何標籤</p>
+        <p class="text-muted dark:text-slate-400 mt-2">
+          <a href={getPermalink('/blog')} class="text-primary hover:underline">
+            前往部落格
+          </a>
+          查看最新文章
+        </p>
+      </div>
+    ) : (
+      <div class="grid gap-4 md:gap-6">
+        {sortedTags.map((tag) => (
+          <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 p-6">
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <h3 class="text-xl font-semibold mb-2">
+                  <a 
+                    href={getPermalink(tag.slug, 'tag')}
+                    class="text-primary hover:text-secondary transition-colors duration-200"
+                  >
+                    {tag.title}
+                  </a>
+                </h3>
+                <p class="text-muted dark:text-slate-400">
+                  {tag.count} 篇文章
+                </p>
+              </div>
+              <div class="ml-4">
+                <a 
+                  href={getPermalink(tag.slug, 'tag')}
+                  class="inline-flex items-center px-4 py-2 bg-primary text-white rounded-md hover:bg-secondary transition-colors duration-200"
+                >
+                  查看文章
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <div class="mt-12 text-center">
+      <a 
+        href={getPermalink('/blog')}
+        class="inline-flex items-center px-6 py-3 bg-secondary text-white rounded-lg hover:bg-primary transition-colors duration-200"
+      >
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+        </svg>
+        返回部落格
+      </a>
+    </div>
+  </section>
+</Layout>
