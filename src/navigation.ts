@@ -15,7 +15,7 @@ export const headerData = {
         },
         {
           text: '分類',
-          href: getPermalink('tutorials', 'category'),
+          href: getPermalink('/categories'),
         },
         {
           text: '標籤',
@@ -41,7 +41,7 @@ export const footerData = {
       title: '部落格',
       links: [
         { text: '最新文章', href: getBlogPermalink() },
-        { text: '分類', href: getPermalink('tutorials', 'category') },
+        { text: '分類', href: getPermalink('/categories') },
         { text: '標籤', href: getPermalink('/tags') },
         { text: 'RSS', href: getAsset('/rss.xml') },
       ],
@@ -56,13 +56,11 @@ export const footerData = {
     {
       title: '法律',
       links: [
-        { text: '使用條款', href: getPermalink('/terms') },
         { text: '隱私權政策', href: getPermalink('/privacy') },
       ],
     },
   ],
   secondaryLinks: [
-    { text: '使用條款', href: getPermalink('/terms') },
     { text: '隱私權政策', href: getPermalink('/privacy') },
   ],
   socialLinks: [

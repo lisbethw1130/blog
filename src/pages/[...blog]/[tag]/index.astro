@@ -4,6 +4,15 @@ import Headline from '~/components/blog/Headline.astro';
 import { fetchPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
 
+export const prerender = true;
+
+// 為動態路由提供靜態路徑
+export async function getStaticPaths() {
+  return [
+    { params: { tag: '' } }, // 這會匹配 /tag/ 路徑
+  ];
+}
+
 interface TagInfo {
   title: string;
   slug: string;
@@ -35,7 +44,7 @@ const sortedTags: TagInfo[] = Object.values(tagCounts)
   .sort((a, b) => b.count - a.count);
 
 const metadata = {
-  title: 'tags',
+  title: '所有標籤',
   description: '瀏覽所有文章標籤，快速找到您感興趣的主題。',
 };
 ---
