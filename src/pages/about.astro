@@ -6,6 +6,7 @@ import Features3 from '~/components/widgets/Features3.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import { getPermalink } from '~/utils/permalinks';
+import oitPhoto from '~/assets/images/OIT-close.jpg';
 
 const metadata = {
   title: '關於我 - Lisbeth Wu',
@@ -22,8 +23,9 @@ const metadata = {
     actions={[{ variant: 'primary', text: '聯絡我', href: getPermalink('/contact') }]}
   >
     <Fragment slot="subtitle">
-      我是一位專精於後端開發與 DevOps 的工程師，擁有豐富的 Ruby on Rails 和 AWS 雲端基礎設施經驗。<br />
-      致力於建構高效能、可擴展的系統架構，並積極參與開源社群貢獻。
+      我是一位專精於後端開發與 DevOps 的工程師。<br />
+      在資訊領域，勇於嘗試不同的解決方案，並將這樣的理念融入在生活中。<br />
+      在人文領域，我希望當一個有溫度的技術工作者，將經驗與所學拋磚引玉。
     </Fragment>
   </Hero>
 
@@ -58,7 +60,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      src: oitPhoto,
       alt: 'Lisbeth Wu',
       loading: 'eager',
     }}
@@ -66,20 +68,22 @@ const metadata = {
     <Fragment slot="content">
       <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">關於我</h2>
       <p>
-        歡迎來到我的技術世界。我專注於後端系統開發與 DevOps 實踐，
-        每一行程式碼都體現了我對於技術品質和系統效能的堅持。
+        我是吳宇萱，今年 27 歲，具有五年工程師後端與維運經驗，同時是一位開源人。
       </p>
       <br />
       <p>
-        我從日常的技術挑戰中獲得靈感，無論是優化系統效能、設計 CI/CD 管道，
-        還是參與開源專案的協作開發。
+        目前主要出沒<a href="https://moztw.org/" target="_blank" class="text-primary hover:underline">MozTW 社群</a>，平常喜歡接觸各種技術，結合生活。<br />
+        為了讓家裡的網路變得更穩定，架了ㄧ整套 Mikrotik 搭配 Unifi AP 的環境，後來還意外透過 EoIP 完成了小型 SD-WAN 設計。<br />
+        現在也在玩 Meshtastic，希望能在宜蘭市區使用平價、的設備建立具有數位韌性的離線通訊品質。
       </p>
       <br />
+      <p>我也是臺灣第一位與<a href="https://tapcpr.org/" target="_blank" class="text-primary hover:underline">社團法人臺灣伴侶權益推動聯盟</a>合作，推動跨性別廢除強制手術議題的當事人。我們一起經歷三年的準備與四年的訴訟，讓臺灣各級法院將「廢除強制手術更換證件性別」視為基本權利<br />
+        如果您也認同這個理念，歡迎<a href="https://transgender.tapcpr.org/transpetition" target="_blank" class="text-primary hover:underline">一起參與連署</a>！
+      </p>
+       <br />
       <p>
-        除了技術工作，我也積極參與社群活動，相信知識分享能推動整個技術生態的進步。
+        最後，歡迎透過以下方式聯絡我：
       </p>
-      <br />
-      <p>如果您想要深入了解我的工作，歡迎透過以下方式聯絡我：</p>
     </Fragment>
 
     <Fragment slot="bg">
